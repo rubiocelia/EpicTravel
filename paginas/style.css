@@ -1,0 +1,1018 @@
+/*fuentes descargadas en el ordenador*/
+
+@font-face {
+    font-family: 'fuente';
+    src: url(../fuentes/fuente.otf);
+}
+
+@font-face {
+    font-family: 'nombres';
+    src: url(../fuentes/nombres.otf);
+}
+
+body {
+    background-color: rgb(183, 199, 228);
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+
+/*Parte css de Celia*/
+
+
+/*menu responsive*/
+
+.header {
+    background-color: #B9DCF4;
+    box-shadow: 1px 1px 5px 0px #AEF3C4;
+    top: 0;
+    width: 100%;
+}
+
+.logo img {
+    display: inline-block;
+    width: 210px;
+    height: 60px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header .nav ul {
+    list-style: none;
+}
+
+.side-menu {
+    display: none;
+}
+
+
+/*Cuando el menu se encuentra seleccionado*/
+
+.side-menu:checked~nav {
+    max-height: 100%;
+}
+
+
+/*Los atributos que se encuntran despues del "~" una vez que se haya hecho el check,
+será transparente el fondo */
+
+.side-menu:checked~.hamb .hamb-line {
+    background: transparent;
+}
+
+
+/*Cuando se selecciona el menu, que rote 45 deg para dar efecto al menu */
+
+.side-menu:checked~.hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.side-menu:checked~.hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.hamb {
+    cursor: pointer;
+    float: right;
+    padding: 40px 20px;
+}
+
+.hamb-line {
+    background: black;
+    display: block;
+    height: 2.5px;
+    position: relative;
+    width: 24px;
+}
+
+.hamb-line::before,
+.hamb-line::after {
+    background: black;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.1s ease-out;
+    width: 100%;
+}
+
+
+/*las dos siguientes etiquetas son para dar la forma de hamburguesa al menu*/
+
+.hamb-line::before {
+    top: 5px;
+}
+
+.hamb-line::after {
+    top: -5px;
+}
+
+.nav {
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    max-height: 0;
+    /*hace que la transicion sea mas suave*/
+    transition: max-height 0.5s ease-out;
+}
+
+.menu {
+    position: relative;
+    width: 100%;
+}
+
+.menu a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    color: black;
+    background-color: #B9DCF4;
+}
+
+.menu a:hover {
+    background-color: #AEF3C4;
+}
+
+
+/*video con texto encima hecho por celia*/
+
+.video {
+    z-index: -1000;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    pointer-events: none/*cuando el menu se hacia responsive no funcionaban los hiperenlaces, 
+con esta etiqueta hacemos que los enlaces funcionen encima del */
+}
+
+
+/*slogan*/
+
+.texto-slogan {
+    background-color: rgb(55, 172, 44);
+    position: relative;
+    width: 100%;
+    margin-top: 55%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.texto-slogan P {
+    font-size: 3.5em;
+    font-family: 'fuente';
+    text-shadow: 1px 1px 5px #ffffff;
+}
+
+
+/*misiones y visiones*/
+
+.container-qs {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding-left: 55px;
+    margin-top: 0;
+    flex-wrap: wrap;
+}
+
+.box {
+    text-align: left;
+    /*ocupa un 33% del ancho del contenedor 
+y restamos 20px para dejar espacio entre los elementos*/
+    flex-basis: calc(33.33% - 20px);
+    background-color: #96c49d;
+    padding: 10px;
+}
+
+.container-qs h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.container-qs p {
+    font-size: 20px;
+}
+
+.cajas {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+
+/*efecto parrallax pagina inicio*/
+
+.contendor-cartas {
+    position: relative;
+    max-width: 1400px;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.carta {
+    width: 90%;
+    transition: all 300ms;
+}
+
+.carta:hover {
+    width: 100%;
+}
+
+.carta .cover {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carta .cover img {
+    width: 250px;
+    display: block;
+    margin: auto;
+    position: relative;
+    top: 40px;
+    z-index: 1;
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
+    transition: all 400ms;
+}
+
+.carta:hover .cover img {
+    top: 0px;
+    filter: none;
+}
+
+.carta .img_back {
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    bottom: -80px;
+    left: 0;
+    background-size: cover;
+    border-radius: 20px;
+    transition: all 300ms;
+}
+
+
+/* La pseudo-clase :nth-of-type() de CSS selecciona uno o más elementos de un tipo dado,
+en función de su posición entre un grupo de hermanos. */
+
+.carta:nth-of-type(1) .img_back {
+    background-image: url(../img/QuienesSomos/bg1.png);
+}
+
+.carta:nth-of-type(2) .img_back {
+    background-image: url(../img/QuienesSomos/bg2.png);
+}
+
+.carta:nth-of-type(3) .img_back {
+    background-image: url(../img/QuienesSomos/bg3.png);
+}
+
+.carta .description {
+    margin-top: -10px;
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+    transition: all 300ms;
+}
+
+.carta:hover .description {
+    padding: 40px;
+    background-color: #b3e7bb;
+}
+
+.carta .description h2 {
+    margin-top: 10px;
+    font-family: 'nombres';
+    letter-spacing: 2px;
+    font-size: 40px;
+}
+
+.carta .description p {
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: justify;
+}
+
+
+/*footer elena*/
+
+.footer {
+    background-color: #B9DCF4;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.cajagrande {
+    display: flex;
+    /*para que todas las opciones del menu sean accesibles,
+incluso en pequeñs pantalla*/
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bloque {
+    /*ocupa un 33% del ancho del contenedor 
+y restamos 20px para dejar espacio entre los elementos*/
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 20px;
+}
+
+.contacto h3,
+.patrocinadores h3,
+.redes h3 {
+    margin-top: 0;
+}
+
+.icon {
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.logo {
+    height: 40px;
+}
+
+
+/* utilizamos media queries para cambiar a una disposición de una sola columna cuando el
+ ancho de la pantalla es inferior a 768 píxeles. */
+
+@media only screen and (max-width: 768px) {
+    .cajagrande {
+        /*para apilar los elementos en vertical*/
+        flex-direction: column;
+    }
+    .bloque {
+        /*cada elemento se expande dentro del bloque para llenar el ancho de pantalla*/
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+    .grande {
+        font-size: 6.5em;
+        margin-left: 0.5em;
+        text-align: left;
+    }
+    .pequeño {
+        font-size: 2em;
+        text-align: left;
+    }
+    .texto-encima p {
+        font-size: 2em;
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 1004px) {
+    .nav {
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: fit-content;
+        margin-right: 15px;
+        padding-left: 10px;
+        background-color: transparent;
+    }
+    .menu li {
+        background-color: #AEF3C4;
+        margin-top: 12px;
+        text-align: center;
+        justify-content: center;
+        float: left;
+        z-index: 1000;
+    }
+    .menu a:hover {
+        background-color: #AEF3C4;
+        color: black;
+        z-index: 1000;
+    }
+    .hamb {
+        display: none;
+    }
+    .grande {
+        font-size: 6.5em;
+        margin-left: 0.5em;
+        text-align: left;
+    }
+    .pequeño {
+        font-size: 2em;
+        text-align: left;
+    }
+    .texto-encima p {
+        font-size: 2em;
+        text-align: left;
+    }
+}
+
+
+/*parte del css elena*/
+
+
+/* empieza la parte de productos*/
+
+.bodyproductos {
+    display: flex;
+    /*propiedades para alinear y ajustar mejor las cartas*/
+    /*para ponerlo en horinzontal*/
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-position: center;
+    background-image: url(../img/productos/atardecer.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.card {
+    position: relative;
+    width: 380px;
+    height: 400px;
+    /*aplicar margenes en resto de cartas*/
+    margin: 20px;
+}
+
+.card .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*determina si la cara posterior de un elemento va a ser visible frente al usuario
+   la cara posterior de un elemento siempre es un fondo transparente , permitiendo, 
+   cuando es visible, que se muestre una imagen de espejo de la cara frontal
+    tiene la propiedad visible: significa que la cara posterior es visible permitiendo 
+    que la cara frontal se muestre invertida
+    hidden significa que la cara posterior no es visible*/
+    backface-visibility: hidden;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.7s;
+}
+
+.card .front {
+    transform: perspective(600px) rotateY(0deg);
+    box-shadow: 0px 5px 10px black;
+}
+
+.card .front img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /*indica como el contenido de un elemento debera ser redimensionado para ajustarse a su contenedor*/
+    object-fit: cover;
+}
+
+.card .front h3 {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background: rgb(0, 0, 0, 0.4);
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+}
+
+.card .back {
+    transform: perspective(600px) rotateY(180deg);
+    background: #a8d6d4;
+    padding: 15px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 23px;
+    box-shadow: 0px 5px 10px #000;
+}
+
+.card .back .link {
+    border-top: 1px solid #f3f3f3;
+    height: 50px;
+    line-height: 50px;
+}
+
+.card .back .link a {
+    color: #f3f3f3;
+}
+
+.card .back h3 {
+    font-size: 30px;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    color: black;
+    text-shadow: white 0.1em 0.1em 0.1em
+}
+
+.card .back p {
+    letter-spacing: 1px;
+}
+
+.card:hover .front {
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.card:hover .back {
+    transform: perspective(600px) rotateY(360deg);
+}
+
+
+/* comienza parte galeria de img*/
+
+.secciongaleria {
+    display: flex;
+    width: 1250px;
+    height: 430px;
+    margin-top: 5%;
+}
+
+.hidden {
+    display: none;
+}
+
+.galeriaimg {
+    width: 0px;
+    flex-grow: 1;
+    /*que cubra todo el espacio*/
+    object-fit: cover;
+    opacity: .8;
+    transition: .3s ease;
+    box-shadow: 0px 5px 10px black;
+    border-radius: 5px;
+}
+
+
+/*cuando estamos encima de la img con el puntero*/
+
+section img:hover {
+    cursor: move;
+    width: 400px;
+    opacity: 1;
+    /*subimos contraste*/
+    filter: contrast(120%)
+}
+
+
+/*cuando es responsive las galeria de imagenes desaparece*/
+
+@media screen and (max-width:768px) {
+    .secciongaleria {
+        display: block;
+    }
+}
+
+
+/*comienza la parte area de cliente*/
+
+
+/*formulario registro*/
+
+.bodyregistro {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0px;
+    background: url(../img/registro/fondo-formulario.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.contenedor {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10%;
+}
+
+.formularioregistro {
+    background-color: white;
+    margin-top: 100px;
+    top: 20px;
+    position: relative;
+}
+
+.h1registro {
+    padding-top: 20px;
+    text-align: center;
+    color: rgb(117, 60, 134);
+    font-size: 40px;
+}
+
+.iconoformulario {
+    padding-top: 4px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    text-align: center;
+    font-size: 20px;
+    width: 80%;
+    padding: 10px;
+    border: none;
+}
+
+.input-contenedor {
+    border: 1px solid gray;
+    margin-bottom: 15px;
+}
+
+.boton {
+    border: none;
+    width: 100%;
+    font-size: 20px;
+    color: #f3f3f3;
+    background-color: #35445d;
+    padding: 15px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: rgb(62, 135, 167);
+}
+
+.parraforegistro {
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: rgb(28, 131, 175);
+    font-weight: 600px;
+}
+
+.link:hover {
+    color: cornflowerblue;
+}
+
+@media(min-width: 768px) {
+    .formularioregistro {
+        width: 500px;
+        margin: auto;
+        border-radius: 2%;
+    }
+}
+
+
+/*parte css david*/
+
+
+/* CSS David parte blog noticias*/
+
+
+/* Medidas para la clase warner de la parte section donde le daremos un 100% de ancho, un alto de 100 de vista de alto,
+una imagen de fondo que este fija que cubra todo el ancho y que este en el centro. */
+
+.warner {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/noticias/fondoWarner.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Aqui esta el div que contiene el titulo que tiene un espacio de 18, un espacio desde la izquierda de 590 pixeles
+un espacio desde arriba de 190 pixeles, una anchura de 320 pixeles, alineamos tanto texto como elementos en el centro
+un color de letra negro y un estilo de letra. */
+
+.warner div h1 {
+    background-color: #AEF3C4;
+    padding: 18px;
+    margin-left: 590px;
+    margin-top: 190px;
+    width: 320px;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    font-family: 'nombres';
+}
+
+
+/* Aqui es donde ira el texto que tendra un backgroundcolor asi como turquesa claro un espacio de 100 pixeles una fuente de letra
+cursiva y el texto ira alineado. */
+
+.warner p {
+    text-align: justify;
+    padding: 100px;
+    font-family: cursive;
+    background-color: #AEF3C4;
+}
+
+
+/* Medidas para la clase cars de la parte section donde le daremos un 100% de ancho, un alto de 100 de vista de alto,
+una imagen de fondo que este fija que cubra todo el ancho y que este en el centro. */
+
+.cars {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/noticias/fondoCars.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Aqui esta el div que contiene el titulo que tiene un espacio de 18, un espacio desde la izquierda de 590 pixeles
+un espacio desde arriba de 190 pixeles, una anchura de 320 pixeles, alineamos tanto texto como elementos en el centro
+un color de letra negro y un estilo de letra. */
+
+.cars div h1 {
+    background-color: #AEF3C4;
+    padding: 18px;
+    margin-left: 590px;
+    margin-top: 190px;
+    width: 320px;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    font-family: 'nombres';
+}
+
+
+/* Aqui es donde ira el texto que tendra un backgroundcolor asi como turquesa claro un espacio de 100 pixeles una fuente de letra
+cursiva y el texto ira alineado. */
+
+.cars p {
+    text-align: justify;
+    padding: 100px;
+    font-family: cursive;
+    background-color: #AEF3C4;
+}
+
+
+/* Medidas para la clase disney de la parte section donde le daremos un 100% de ancho, un alto de 100 de vista de alto,
+una imagen de fondo que este fija que cubra todo el ancho y que este en el centro. */
+
+.disney {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/noticias/fondoDisney.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Aqui esta el div que contiene el titulo que tiene un espacio de 18, un espacio desde la izquierda de 590 pixeles
+un espacio desde arriba de 190 pixeles, una anchura de 320 pixeles, alineamos tanto texto como elementos en el centro
+un color de letra negro y un estilo de letra. */
+
+.disney div h1 {
+    background-color: #AEF3C4;
+    padding: 18px;
+    margin-left: 590px;
+    margin-top: 190px;
+    width: 320px;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    font-family: 'nombres';
+}
+
+
+/* Aqui es donde ira el texto que tendra un backgroundcolor asi como turquesa claro un espacio de 100 pixeles una fuente de letra
+cursiva y el texto ira alineado. */
+
+.disney p {
+    text-align: justify;
+    padding: 100px;
+    font-family: cursive;
+    background-color: #AEF3C4;
+}
+
+
+/* Medidas para la clase harry_potter de la parte section donde le daremos un 100% de ancho, un alto de 100 de vista de alto,
+una imagen de fondo que este fija que cubra todo el ancho y que este en el centro. */
+
+.harry_potter {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/noticias/fondoHarry.jpeg);
+    background-attachment: fixed;
+    background-size: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Aqui esta el div que contiene el titulo que tiene un espacio de 18, un espacio desde la izquierda de 590 pixeles
+un espacio desde arriba de 190 pixeles, una anchura de 320 pixeles, alineamos tanto texto como elementos en el centro
+un color de letra negro y un estilo de letra. */
+
+.harry_potter div h1 {
+    background-color: #AEF3C4;
+    padding: 18px;
+    margin-left: 590px;
+    margin-top: 190px;
+    width: 320px;
+    text-align: center;
+    justify-content: center;
+    color: black;
+    font-family: 'nombres';
+}
+
+
+/* Aqui es donde ira el texto que tendra un backgroundcolor asi como turquesa claro un espacio de 100 pixeles una fuente de letra
+cursiva y el texto ira alineado. */
+
+.harry_potter p {
+    text-align: justify;
+    justify-content: center;
+    padding: 100px;
+    font-family: cursive;
+    background-color: #AEF3C4;
+}
+
+
+/* Responsive tamaño movil del los titulos enciam de las imagenes */
+
+@media (max-width: 768px) {
+    .warner div h1,
+    .cars div h1,
+    .disney div h1,
+    .harry_potter div h1 {
+        margin-left: 10%;
+        margin-top: 30%;
+        width: 80%;
+        font-size: 30px;
+    }
+    .warner p,
+    .cars p,
+    .disney p,
+    .harry_potter p {
+        padding: 65px;
+        font-size: 11px;
+    }
+}
+
+
+/* Responsive styles para pantallas mas pequeñas de 480px */
+
+@media (max-width: 480px) {
+    .warner div h1,
+    .cars div h1,
+    .disney div h1,
+    .harry_potter div h1 {
+        margin-left: 5%;
+        margin-top: 30%;
+        width: 90%;
+        font-size: 30px;
+    }
+    .warner p,
+    .cars p,
+    .disney p,
+    .harry_potter p {
+        padding: 120px;
+        font-size: 11px;
+    }
+}
+
+
+/* Formulario David CSS */
+
+
+/* Propiedades de la parte de contacto donde lo situamos en la derecha y le damos un margen en el mismo sitio
+para que quede mas centrado luego le damos las mismas medidas que al mapa que seran de 450x600 pixeles le ponemos
+un padding del 3,5% para que ocupe el texto todo el cuadro y ponemos que tanto el contenido como el texto este en el centro. */
+
+.caja_contacto {
+    float: right;
+    height: 450px;
+    width: 600px;
+    margin-right: 100px;
+    justify-content: center;
+    padding: 3.5%;
+    text-align: center;
+    font-size: 30px;
+    float: right;
+    background-color: #AEF3C4;
+}
+
+
+/* Le damos al mapa un margen en la izquierda para que quede centrado en el medio junto con la caja de contacto
+y lo situamos a la izquierda */
+
+.mapa {
+    float: left;
+    margin-left: 100px;
+}
+
+
+/* Aqui es el div donde se encuentra las dos cajas del mapa y la de contacto y de damos un margen de arriba para que no este
+pegado al menu */
+
+.caja_global {
+    margin-top: 100px;
+}
+
+
+/* Este es el formulario donde haremos que el texto y el contenido este en el medio y los bordes de la caja 
+del formulario no se vean*/
+
+.encuesta {
+    text-align: center;
+    border-style: hidden;
+}
+
+
+/* Esta es la caja de texto donde nos podran poner sus ideas de viaje y lo unico es que alineamos el texto y contenido
+en medio */
+
+.idea {
+    text-align: center;
+    justify-content: center;
+}
+
+
+/* Esto engloba tanto titulo de formulario tanto como el mismo formulario lo unico que hacemos es alinear el contenido al medio
+y ponemos un margen arriba de 600 pixeles paar que quede por debajo de la otra caja */
+
+.formulario_contacto {
+    justify-content: center;
+    margin-top: 600px;
+}
+
+
+/* El titulo del formulario le pondremos que sea alineado en el centro */
+
+.titulo_formulario {
+    text-align: center;
+    font-size: 25px;
+}
+
+
+/* Y aqui es donde ira el fondo de esta pagina que lo unico asi distinto es el backdrop-filter: blur(10px) que lo que hace
+es difuminar el fondo para que de ese efecto de fondo borroso. */
+
+.contacto_fondo {
+    background-image: url(../img/contacto/fondo_contacto.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    backdrop-filter: blur(10px);
+}
+
+
+/* Media queries  para hacer el formulario responsive */
+
+@media screen and (max-width: 768px) {
+    .caja_contacto {
+        float: none;
+        margin: 0;
+        height: 50vh;
+        width: 90%;
+        font-size: 5vw;
+        margin-left: 25px;
+    }
+    .mapa {
+        float: none;
+        margin: 0;
+        height: 70vh;
+        width: 60px;
+    }
+    .formulario_contacto {
+        min-width: 90%;
+        max-width: 90%;
+        margin-top: 5vh;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .caja_contacto {
+        height: 30vh;
+        font-size: 5vw;
+    }
+    .mapa {
+        height: 40vh;
+    }
+}
